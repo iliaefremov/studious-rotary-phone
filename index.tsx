@@ -8,8 +8,10 @@ if (!rootElement) {
 }
 
 const root = ReactDOM.createRoot(rootElement);
+console.log("Attempting to render App...");
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
+console.log("App render initiated.");

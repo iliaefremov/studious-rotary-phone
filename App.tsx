@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Schedule from './components/Schedule';
 import Grades from './components/Grades';
 import Chat from './components/Chat';
 import Games from './components/Games';
 import NotificationManager from './components/NotificationManager';
 import { ScheduleIcon, GradesIcon, AssistantIcon, GamesIcon } from './components/icons/Icons';
+import type { TelegramUser } from './types'; // Импортируем TelegramUser
+import { ADMIN_TELEGRAM_ID } from './constants'; // Импортируем ADMIN_TELEGRAM_ID
 
 /**
  * Основной компонент приложения "Student Hub".
@@ -12,14 +14,21 @@ import { ScheduleIcon, GradesIcon, AssistantIcon, GamesIcon } from './components
  * Включает в себя нижнюю навигационную панель.
  */
 const App: React.FC = () => {
+  console.log("App component rendered.");
   // Состояние для отслеживания активной вкладки. По умолчанию открываются "Оценки".
   const [activeTab, setActiveTab] = useState('grades');
+  const [user, setUser] = useState<TelegramUser | null>(null);
+  // Проверка, является ли пользователь администратором.
+  const isAdminMode = user?.id.toString() === ADMIN_TELEGRAM_ID;
+  
+  // Состояния для модального окна редактирования.
 
   /**
    * Рендерит компонент в зависимости от активной вкладки.
    * @returns {React.ReactElement} Компонент для отображения.
    */
   const renderContent = () => {
+    console.log(`Rendering content for tab: ${activeTab}`);
     switch (activeTab) {
       case 'schedule':
         return <Schedule />;
@@ -33,6 +42,22 @@ const App: React.FC = () => {
         return <Grades />;
     }
   };
+
+  // Эффект для инициализации Telegram Web App и получения данных пользователя.
+  useEffect(() => {
+    console.log("useEffect in App component triggered.");
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+        console.log("Telegram WebApp object found.", tg);
+        tg.ready();
+        console.log("Telegram WebApp ready() called.");
+        console.log("Attempting to set user data.");
+        setUser(tg.initDataUnsafe?.user || null);
+        console.log("Telegram user data set.", tg.initDataUnsafe?.user);
+    } else {
+        console.log("Telegram WebApp object NOT found.");
+    }
+  }, []);
 
   // Конфигурация элементов навигационной панели.
   const navItems = [

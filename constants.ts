@@ -1,5 +1,7 @@
 import type { DaySchedule, Achievement, SubjectGrade } from './types';
 
+export const ADMIN_TELEGRAM_ID = '1276188185';
+
 // Счетчик для генерации уникальных ID для элементов расписания.
 let idCounter = 1;
 

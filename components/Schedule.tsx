@@ -1,12 +1,11 @@
 import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react';
-import { SCHEDULE_WEEK_1, SCHEDULE_WEEK_2 } from '../constants';
+import { SCHEDULE_WEEK_1, SCHEDULE_WEEK_2, ADMIN_TELEGRAM_ID } from '../constants';
 import type { ScheduleItem, DaySchedule, TelegramUser } from './../types';
 import { generateHomeworkHelp } from '../services/geminiService';
 
 // Константы для упрощения работы с днями недели и административными правами.
 const DAYS_OF_WEEK = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница'];
 const EMPTY_SCHEDULE_ITEM: Omit<ScheduleItem, 'id'> = { subject: '', time: '', classroom: '', teacher: '', homework: '', isImportant: false };
-const ADMIN_TELEGRAM_ID = '1276188185';
 
 /**
  * Вспомогательная функция для получения номера недели в году.
