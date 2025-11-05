@@ -3,7 +3,6 @@ import Schedule from './components/Schedule';
 import Grades from './components/Grades';
 import Chat from './components/Chat';
 import Games from './components/Games';
-import NotificationManager from './components/NotificationManager';
 import { ScheduleIcon, GradesIcon, AssistantIcon, GamesIcon } from './components/icons/Icons';
 import type { TelegramUser } from './types';
 import { ADMIN_TELEGRAM_ID } from './constants';
@@ -73,7 +72,7 @@ const App: React.FC = () => {
   return (
     <div className="bg-primary min-h-screen flex flex-col text-text-primary font-sans">
       {/* Компонент для управления уведомлениями (невидимый) */}
-      <NotificationManager />
+      {/* <NotificationManager /> */}
       
       {/* Основной контент страницы */}
       <main className="flex-1 p-4 md:p-8 overflow-y-auto pb-28">
