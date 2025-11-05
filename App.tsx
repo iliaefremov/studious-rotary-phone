@@ -20,7 +20,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // ВРЕМЕННО ОТКЛЮЧАЕМ ВСЕ ВЗАИМОДЕЙСТВИЕ С TELEGRAM SDK
-    /*
+    
     console.log("useEffect in App component triggered.");
     const tg = window.Telegram?.WebApp;
     if (tg) {
@@ -33,7 +33,7 @@ const App: React.FC = () => {
     } else {
         console.log("Telegram WebApp object NOT found.");
     }
-    */
+    
   }, []);
 
 
