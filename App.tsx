@@ -44,8 +44,8 @@ const App: React.FC = () => {
   const renderContent = () => {
     console.log(`Rendering content for tab: ${activeTab}`);
     // Пока возвращаем пустой div для проверки
-    return <div>Component placeholder</div>;
-    /*
+    // return <div>Component placeholder</div>;
+    
     switch (activeTab) {
       case 'schedule':
         return <Schedule />;
@@ -58,7 +58,7 @@ const App: React.FC = () => {
       default:
         return <Grades />;
     }
-    */
+    
   };
 
   // Конфигурация элементов навигационной панели.
